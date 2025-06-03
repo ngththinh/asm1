@@ -1,0 +1,90 @@
+.edit-form-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+  background-color: #fffdfd;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.edit-title {
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #d94f70;
+  font-family: "Georgia", serif;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.edit-label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  color: #333;
+}
+
+.edit-input,
+.edit-textarea,
+.edit-input-readonly {
+  margin-top: 6px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+.edit-input:focus,
+.edit-textarea:focus {
+  border-color: #d94f70;
+  outline: none;
+}
+
+.edit-input-readonly {
+  background-color: #f2f2f2;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.edit-upload {
+  margin-top: 6px;
+  font-size: 0.95rem;
+}
+
+.edit-button {
+  padding: 12px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  background-color: #d94f70;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+  background-color: #c4385b;
+}
+
+.edit-button.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.edit-message {
+  padding: 1rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.edit-message.error {
+  color: red;
+}

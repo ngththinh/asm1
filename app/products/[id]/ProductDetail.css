@@ -1,0 +1,62 @@
+.detail-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 12px;
+  background-color: #fffefc;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  font-family: "Segoe UI", sans-serif;
+}
+
+.detail-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #d94f70;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-family: "Georgia", serif;
+}
+
+.detail-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin: 0 auto 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.detail-description {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.detail-price {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.detail-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.detail-edit-button {
+  padding: 0.6rem 1.2rem;
+  background-color: #d94f70;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.detail-edit-button:hover {
+  background-color: #c4385b;
+}
