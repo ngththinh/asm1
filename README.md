@@ -1,4 +1,18 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TechHub - Modern Technology Store
+
+This is a modern technology store built with [Next.js](https://nextjs.org) and bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+## Features
+
+- 🛒 Modern tech product catalog
+- 🔐 User authentication (login/register)
+- 📱 Responsive design
+- 🎨 Modern UI with gradient themes
+- 🔍 Product search functionality
+- 📸 Image upload with Cloudinary
+- 💾 MongoDB database with Mongoose
+- 🔒 JWT authentication
+- ⚡ Fast performance with Next.js 15
 
 ## Getting Started
 

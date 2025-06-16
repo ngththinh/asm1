@@ -97,11 +97,31 @@ export default function EditProduct({ params }) {
   }
 
   if (loading && !form) {
-    return <p className="edit-message">Loading product details...</p>;
+    return (
+      <div className="loading-container">
+        <div className="loading-spinner"></div>
+        <p className="loading-text">Loading tech product details...</p>
+      </div>
+    );
   }
 
   if (fetchError) {
-    return <p className="edit-message error">Error: {fetchError}</p>;
+    return (
+      <div className="error-container">
+        <div className="error-icon">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+            <line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" strokeWidth="2"/>
+            <line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" strokeWidth="2"/>
+          </svg>
+        </div>
+        <h2>Error Loading Tech Product</h2>
+        <p>{fetchError}</p>
+        <button onClick={() => router.push("/")} className="btn btn-primary">
+          Back to Tech Products
+        </button>
+      </div>
+    );
   }
 
   if (!form) {
@@ -109,78 +129,176 @@ export default function EditProduct({ params }) {
   }
 
   return (
-    <main className="edit-form-container">
-      <h1 className="edit-title">Edit Product</h1>
-      <form onSubmit={handleSubmit} className="edit-form">
-        <label className="edit-label">
-          Name
-          <input
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            required
-            disabled={loading || uploadingImage}
-            className="edit-input"
-          />
-        </label>
+    <div className="form-wrapper">
+      <div className="container">
+        <div className="form-container">
+          <div className="form-header">
+            <div className="form-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" stroke="currentColor" strokeWidth="2"/>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" stroke="currentColor" strokeWidth="2"/>
+              </svg>
+            </div>
+            <h1 className="form-title">Edit Tech Product</h1>
+            <p className="form-subtitle">Update your tech product information</p>
+          </div>
 
-        <label className="edit-label">
-          Description
-          <textarea
-            name="description"
-            value={form.description}
-            onChange={handleChange}
-            required
-            rows={4}
-            disabled={loading || uploadingImage}
-            className="edit-textarea"
-          />
-        </label>
+          <form onSubmit={handleSubmit} className="product-form">
+            <div className="form-grid">
+              <div className="form-group">
+                <label className="form-label">
+                  <svg className="label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="2"/>
+                  </svg>
+                  Product Name
+                </label>
+                <input
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                  disabled={loading || uploadingImage}
+                  placeholder="Enter tech product name"
+                  className="form-input"
+                />
+              </div>
 
-        <label className="edit-label">
-          Price
-          <input
-            name="price"
-            type="number"
-            step="0.01"
-            value={form.price}
-            onChange={handleChange}
-            required
-            disabled={loading || uploadingImage}
-            className="edit-input"
-          />
-        </label>
+              <div className="form-group">
+                <label className="form-label">
+                  <svg className="label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" strokeWidth="2"/>
+                    <path d="M12 1v6m0 6v6" stroke="currentColor" strokeWidth="2"/>
+                  </svg>
+                  Price (VND)
+                </label>
+                <input
+                  name="price"
+                  type="number"
+                  step="0.01"
+                  value={form.price}
+                  onChange={handleChange}
+                  required
+                  disabled={loading || uploadingImage}
+                  placeholder="0.00"
+                  className="form-input"
+                />
+              </div>
+            </div>
 
-        <label className="edit-label">
-          Image URL (auto-filled after upload)
-          <input
-            name="image"
-            value={form.image}
-            readOnly
-            className="edit-input-readonly"
-            disabled
-          />
-        </label>
+            <div className="form-group">
+              <label className="form-label">
+                <svg className="label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" strokeWidth="2"/>
+                  <polyline points="14,2 14,8 20,8" stroke="currentColor" strokeWidth="2"/>
+                  <line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" strokeWidth="2"/>
+                  <line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" strokeWidth="2"/>
+                  <polyline points="10,9 9,9 8,9" stroke="currentColor" strokeWidth="2"/>
+                </svg>
+                Description
+              </label>
+              <textarea
+                name="description"
+                value={form.description}
+                onChange={handleChange}
+                required
+                rows={4}
+                disabled={loading || uploadingImage}
+                placeholder="Describe your tech product..."
+                className="form-textarea"
+              />
+            </div>
 
-        <label className="edit-label">
-          Upload New Image
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageChange}
-            disabled={loading || uploadingImage}
-            className="edit-upload"
-          />
-        </label>
+            <div className="form-group">
+              <label className="form-label">
+                <svg className="label-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2" stroke="currentColor" strokeWidth="2"/>
+                  <circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" strokeWidth="2"/>
+                  <polyline points="21,15 16,10 5,21" stroke="currentColor" strokeWidth="2"/>
+                </svg>
+                Tech Product Image
+              </label>
 
-        <button
-          type="submit"
-          disabled={loading || uploadingImage}
-          className={`edit-button ${loading || uploadingImage ? "disabled" : ""}`}
-        >
-          {loading || uploadingImage ? "Processing..." : "Update Product"}
-        </button>
-      </form>
-    </main>
+              {form.image ? (
+                <div className="image-preview">
+                  <img src={form.image} alt="Product preview" className="preview-image" />
+                  <button
+                    type="button"
+                    onClick={() => setForm(prev => ({ ...prev, image: "" }))}
+                    className="remove-image"
+                    disabled={loading || uploadingImage}
+                  >
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                      <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" strokeWidth="2"/>
+                      <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" strokeWidth="2"/>
+                    </svg>
+                  </button>
+                </div>
+              ) : (
+                <div className="upload-area">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageChange}
+                    disabled={loading || uploadingImage}
+                    className="file-input"
+                    id="image-upload"
+                  />
+                  <label htmlFor="image-upload" className="upload-label">
+                    <div className="upload-content">
+                      {uploadingImage ? (
+                        <>
+                          <div className="loading"></div>
+                          <span>Uploading...</span>
+                        </>
+                      ) : (
+                        <>
+                          <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" strokeWidth="2"/>
+                            <polyline points="7,10 12,15 17,10" stroke="currentColor" strokeWidth="2"/>
+                            <line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" strokeWidth="2"/>
+                          </svg>
+                          <span>Click to upload new image</span>
+                          <small>PNG, JPG, GIF up to 10MB</small>
+                        </>
+                      )}
+                    </div>
+                  </label>
+                </div>
+              )}
+            </div>
+
+            <div className="form-actions">
+              <button
+                type="button"
+                onClick={() => router.push(`/products/${params.id}`)}
+                className="btn btn-outline"
+                disabled={loading || uploadingImage}
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                disabled={loading || uploadingImage}
+                className="btn btn-primary"
+              >
+                {loading || uploadingImage ? (
+                  <>
+                    <div className="loading"></div>
+                    <span>Updating...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Update Tech Product</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                      <path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="2"/>
+                    </svg>
+                  </>
+                )}
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 }
